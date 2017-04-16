@@ -206,18 +206,24 @@ System::Void showMsg(String^ s)
 private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		char msg[DEFAULT_BUFLEN];
 		String^ smg = "";
-
 		smg += textBox1->Text;
-		for ( int i = 0; i < sizeof(smg); i++ )
-		{
-			msg[i] = Convert::ToChar(smg[i]);
-		}
 		richTextBox1->Text = smg;
-		send(mySock, msg, sizeof(msg), NULL);
+		
+		char msg[DEFAULT_BUFLEN];
+	
+		for ( int i = 0; i < smg->Length; i++)
+		{
+			msg[i] = smg[i];
+		}
+		for ( int i = smg->Length; i < DEFAULT_BUFLEN - smg->Length; i++)
+		{
+			msg[i] = '\0';
+		}
+
+		send(mySock,msg,sizeof(msg), NULL);
+		
 		 }
 };
-
 
 }
