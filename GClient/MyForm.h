@@ -53,6 +53,7 @@ namespace GClient {
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::TextBox^  textBox2;
 
 	private:
 		/// <summary>
@@ -74,13 +75,14 @@ namespace GClient {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// richTextBox1
 			// 
 			this->richTextBox1->Location = System::Drawing::Point(12, 12);
 			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(546, 195);
+			this->richTextBox1->Size = System::Drawing::Size(441, 195);
 			this->richTextBox1->TabIndex = 0;
 			this->richTextBox1->Text = L"";
 			this->richTextBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::richTextBox1_TextChanged);
@@ -106,7 +108,7 @@ namespace GClient {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(459, 228);
+			this->button2->Location = System::Drawing::Point(459, 38);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(99, 23);
 			this->button2->TabIndex = 3;
@@ -124,11 +126,20 @@ namespace GClient {
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(459, 12);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(100, 20);
+			this->textBox2->TabIndex = 5;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(570, 314);
+			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -172,6 +183,8 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	mySock = socket(AF_INET, SOCK_STREAM, NULL);
 	connect(mySock, (SOCKADDR*)&address, adresize);
 
+	sendName();
+
 	ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::TestThread);
 		Thread^ newThread = gcnew Thread( threadDelegate );
 		newThread->Start();
@@ -180,6 +193,27 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 
 	public: System::Void richTextBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
+
+System::Void sendName()
+{
+	String^ nick = "";
+	nick = textBox2->Text;
+
+	char msg[DEFAULT_BUFLEN];
+	
+		for ( int i = 0; i < nick->Length; i++)
+		{
+			msg[i] = nick[i];
+		}
+		for ( int i = nick->Length; i < DEFAULT_BUFLEN - nick->Length; i++)
+		{
+			msg[i] = '\0';
+		}
+
+		send(mySock,msg,sizeof(msg), NULL);
+		richTextBox1->Text += nick;
+	
+}
 
 System::Void TestThread()
 {
@@ -223,6 +257,8 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 
 		send(mySock,msg,sizeof(msg), NULL);
 		
+		 }
+private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
 };
 
