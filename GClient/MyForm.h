@@ -92,6 +92,7 @@ namespace GClient {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(313, 74);
 			this->textBox1->TabIndex = 1;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// button1
 			// 
@@ -101,6 +102,7 @@ namespace GClient {
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"SEND";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button2
 			// 
@@ -138,7 +140,7 @@ namespace GClient {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-		}
+			}
 #pragma endregion
 
 	SOCKET mySock;
@@ -173,7 +175,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::TestThread);
 		Thread^ newThread = gcnew Thread( threadDelegate );
 		newThread->Start();
-		
+
 		 }
 
 	public: System::Void richTextBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -201,6 +203,20 @@ System::Void showMsg(String^ s)
 	{ 
 		richTextBox1->Text = s;
 	};
+private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		char msg[DEFAULT_BUFLEN];
+		String^ smg = "";
+
+		smg += textBox1->Text;
+		for ( int i = 0; i < sizeof(smg); i++ )
+		{
+			msg[i] = Convert::ToChar(smg[i]);
+		}
+		richTextBox1->Text = smg;
+		send(mySock, msg, sizeof(msg), NULL);
+		 }
 };
 
 
