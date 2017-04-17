@@ -172,7 +172,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 		exit(1);
 	}
 	 
-	richTextBox1->Text = "connected to srv";
+	richTextBox1->AppendText("connect to srv!" + "\n");
 
 	SOCKADDR_IN address;
 	int adresize = sizeof(address);
@@ -185,7 +185,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 
 	sendName();
 
-	ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::TestThread);
+		ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::TestThread);
 		Thread^ newThread = gcnew Thread( threadDelegate );
 		newThread->Start();
 
@@ -198,6 +198,7 @@ System::Void sendName()
 {
 	String^ nick = "";
 	nick = textBox2->Text;
+	textBox2->Text = "";
 
 	char msg[DEFAULT_BUFLEN];
 	
@@ -211,38 +212,49 @@ System::Void sendName()
 		}
 
 		send(mySock,msg,sizeof(msg), NULL);
-		richTextBox1->Text += nick;
+		richTextBox1->AppendText(nick + "\n");
 	
 }
 
-System::Void TestThread()
+
+void TestThread()
 {
-	char get[DEFAULT_BUFLEN];
-	String^ msg = "";
-	while(true)
+	while(1)
 	{
+	for (;; Sleep(75))
+	{
+		char *get = new char[1024];
+		String^ msg = "";
+	
+for (int i = 0; i < DEFAULT_BUFLEN; i++) get[i] = 0;
+
 		recv(mySock, get, sizeof(get), NULL);
 		printf(get); printf("\n");
-
+		
 		for ( int i = 0; i < sizeof(get); i ++ )
 		{
 			msg+= Convert::ToChar(get[i]);
 		}
-
+		
 		richTextBox1->Invoke(gcnew Action<String^>(this, &MyForm::showMsg), msg);
+		
+	delete get;
+
+	}
 	}
 }
 
-System::Void showMsg(String^ s)
+System::Void showMsg(String^ msg)
 	{ 
-		richTextBox1->Text = s;
-	};
+		
+		richTextBox1->AppendText(msg + "\n");
+	}
+
 private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		String^ smg = "";
 		smg += textBox1->Text;
-		richTextBox1->Text = smg;
 		
 		char msg[DEFAULT_BUFLEN];
 	

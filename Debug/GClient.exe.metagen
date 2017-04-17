@@ -22,5 +22,6 @@ Class GClient.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Methods:
     InitializeComponent(): PrivateScope, Public, HideBySig
     richTextBox1_TextChanged(Object, EventArgs): PrivateScope, Public, HideBySig
+    sendName(): PrivateScope, Public, HideBySig
     TestThread(): PrivateScope, Public, HideBySig
     showMsg(String): PrivateScope, Public, HideBySig
