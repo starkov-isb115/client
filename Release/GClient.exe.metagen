@@ -25,3 +25,4 @@ Class GClient.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     sendName(): PrivateScope, Public, HideBySig
     TestThread(): PrivateScope, Public, HideBySig
     showMsg(String): PrivateScope, Public, HideBySig
+    getIP(): PrivateScope, Public, HideBySig

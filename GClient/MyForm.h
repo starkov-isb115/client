@@ -6,7 +6,10 @@
 #include <iostream>
 #include <stdlib.h>
 #include <clocale>
-//#include <thread>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
 
 #pragma comment (lib, "Ws2_32.lib")
 #pragma comment (lib, "Mswsock.lib")
@@ -17,7 +20,7 @@
 
 namespace GClient {
 
-
+	using namespace std;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -272,6 +275,43 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 		 }
 private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
+
+public: System::Void getIP()
+		{
+				setlocale(LC_ALL,"russian");
+
+    string s; // сюда будем класть считанные строки
+    ifstream file("C:\\cppstudio.txt"); // файл из которого читаем (для линукс путь будет выглядеть по другому)
+	string str;
+    while(getline(file, s)){ // пока не достигнут конец файла класть очередную строку в переменную (s)
+		str = s;
+    }
+
+    file.close(); // обязательно закрываем файл что бы не повредить его
+
+  vector<string> arr;
+cout << str << endl;  string delim(" ");
+  size_t prev = 0;
+  size_t next;
+  size_t delta = delim.length();
+
+  while( ( next = str.find( delim, prev ) ) != string::npos ){
+
+    string tmp = str.substr( prev, next-prev );
+    cout << tmp << endl;
+
+    arr.push_back( str.substr( prev, next-prev ) );
+    prev = next + delta;
+  }
+ 
+  string tmp = str.substr( prev );
+  cout << tmp << endl;
+
+  arr.push_back( str.substr( prev ) );
+  int i;
+  cin >> i;
+ 
+		}
 };
 
 }
