@@ -175,17 +175,15 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 		exit(1);
 	}
 	 
-	richTextBox1->AppendText("connect to srv!" + "\n");
-
 	SOCKADDR_IN address;
 	int adresize = sizeof(address);
-	address.sin_addr.s_addr = inet_addr("127.0.0.1");
+	address.sin_addr.s_addr = inet_addr(getIP().c_str());
 	address.sin_port = htons(1997);
 	address.sin_family = AF_INET;
 
 	mySock = socket(AF_INET, SOCK_STREAM, NULL);
 	connect(mySock, (SOCKADDR*)&address, adresize);
-
+	richTextBox1->AppendText("connect to srv!" + "\n");
 	sendName();
 
 		ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::TestThread);
@@ -216,9 +214,7 @@ System::Void sendName()
 
 		send(mySock,msg,sizeof(msg), NULL);
 		richTextBox1->AppendText(nick + "\n");
-	
 }
-
 
 void TestThread()
 {
@@ -276,7 +272,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		 }
 
-public: System::Void getIP()
+string getIP()
 		{
 				setlocale(LC_ALL,"russian");
 
@@ -308,9 +304,7 @@ cout << str << endl;  string delim(" ");
   cout << tmp << endl;
 
   arr.push_back( str.substr( prev ) );
-  int i;
-  cin >> i;
- 
+ return tmp;
 		}
 };
 
