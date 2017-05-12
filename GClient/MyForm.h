@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #define WIN32_LEAN_AND_MEAN
 
@@ -15,7 +15,7 @@
 #pragma comment (lib, "Mswsock.lib")
 #pragma comment (lib, "AdvApi32.lib")
 
-#define DEFAULT_BUFLEN 512
+#define DEFAULT_BUFLEN 1024
 
 
 namespace GClient {
@@ -41,7 +41,7 @@ namespace GClient {
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~MyForm()
 		{
@@ -55,55 +55,81 @@ namespace GClient {
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::Button^  button3;
+
 	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::MenuStrip^  menuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^  toolStripMenuItem1;
+	private: System::Windows::Forms::ToolStripMenuItem^  С‚СЏРЅРєР°ToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  menuToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  leaveToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  РѕР»РёРІРєР°ToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  РґР»СЏРњРµРЅСЏToolStripMenuItem;
+
+
+
+
 
 	private:
 		/// <summary>
-		/// Требуется переменная конструктора.
+		/// РўСЂРµР±СѓРµС‚СЃСЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Обязательный метод для поддержки конструктора - не изменяйте
-		/// содержимое данного метода при помощи редактора кода.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° - РЅРµ РёР·РјРµРЅСЏР№С‚Рµ
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ РґР°РЅРЅРѕРіРѕ РјРµС‚РѕРґР° РїСЂРё РїРѕРјРѕС‰Рё СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 
 	
 	public: void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->С‚СЏРЅРєР°ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->РѕР»РёРІРєР°ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->РґР»СЏРњРµРЅСЏToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->leaveToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// richTextBox1
 			// 
-			this->richTextBox1->Location = System::Drawing::Point(12, 12);
+			this->richTextBox1->BackColor = System::Drawing::Color::White;
+			this->richTextBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->richTextBox1->Cursor = System::Windows::Forms::Cursors::Arrow;
+			this->richTextBox1->ForeColor = System::Drawing::Color::Black;
+			this->richTextBox1->Location = System::Drawing::Point(301, 56);
 			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(441, 195);
+			this->richTextBox1->ReadOnly = true;
+			this->richTextBox1->Size = System::Drawing::Size(277, 196);
 			this->richTextBox1->TabIndex = 0;
 			this->richTextBox1->Text = L"";
 			this->richTextBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::richTextBox1_TextChanged);
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(12, 228);
+			this->textBox1->Location = System::Drawing::Point(301, 260);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(313, 74);
+			this->textBox1->Size = System::Drawing::Size(131, 74);
 			this->textBox1->TabIndex = 1;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(332, 228);
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->button1->ForeColor = System::Drawing::Color::Black;
+			this->button1->Location = System::Drawing::Point(444, 284);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(121, 74);
+			this->button1->Size = System::Drawing::Size(121, 50);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"SEND";
 			this->button1->UseVisualStyleBackColor = true;
@@ -111,7 +137,7 @@ namespace GClient {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(459, 38);
+			this->button2->Location = System::Drawing::Point(466, 27);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(99, 23);
 			this->button2->TabIndex = 3;
@@ -119,38 +145,87 @@ namespace GClient {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(459, 279);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(99, 23);
-			this->button3->TabIndex = 4;
-			this->button3->Text = L"LEAVE";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
-			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(459, 12);
+			this->textBox2->Location = System::Drawing::Point(332, 29);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(100, 20);
 			this->textBox2->TabIndex = 5;
 			this->textBox2->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
 			// 
+			// menuStrip1
+			// 
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->toolStripMenuItem1, 
+				this->menuToolStripMenuItem});
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(602, 24);
+			this->menuStrip1->TabIndex = 6;
+			this->menuStrip1->Text = L"menuStrip1";
+			// 
+			// toolStripMenuItem1
+			// 
+			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {this->С‚СЏРЅРєР°ToolStripMenuItem, 
+				this->РѕР»РёРІРєР°ToolStripMenuItem, this->РґР»СЏРњРµРЅСЏToolStripMenuItem});
+			this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
+			this->toolStripMenuItem1->Size = System::Drawing::Size(88, 20);
+			this->toolStripMenuItem1->Text = L"Backgrounds";
+			this->toolStripMenuItem1->Click += gcnew System::EventHandler(this, &MyForm::toolStripMenuItem1_Click);
+			// 
+			// С‚СЏРЅРєР°ToolStripMenuItem
+			// 
+			this->С‚СЏРЅРєР°ToolStripMenuItem->Name = L"С‚СЏРЅРєР°ToolStripMenuItem";
+			this->С‚СЏРЅРєР°ToolStripMenuItem->Size = System::Drawing::Size(217, 22);
+			this->С‚СЏРЅРєР°ToolStripMenuItem->Text = L"Р”Р»СЏ СѓРІРµСЂРµРЅРЅС‹С… РІ СЃРµР±Рµ";
+			this->С‚СЏРЅРєР°ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::С‚СЏРЅРєР°ToolStripMenuItem_Click);
+			// 
+			// РѕР»РёРІРєР°ToolStripMenuItem
+			// 
+			this->РѕР»РёРІРєР°ToolStripMenuItem->Name = L"РѕР»РёРІРєР°ToolStripMenuItem";
+			this->РѕР»РёРІРєР°ToolStripMenuItem->Size = System::Drawing::Size(217, 22);
+			this->РѕР»РёРІРєР°ToolStripMenuItem->Text = L"Р”Р»СЏ Р·РЅР°СЋС‰РёС… С‚РѕР»Рє РІ РјРѕРґРµ";
+			this->РѕР»РёРІРєР°ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::РѕР»РёРІРєР°ToolStripMenuItem_Click);
+			// 
+			// РґР»СЏРњРµРЅСЏToolStripMenuItem
+			// 
+			this->РґР»СЏРњРµРЅСЏToolStripMenuItem->Name = L"РґР»СЏРњРµРЅСЏToolStripMenuItem";
+			this->РґР»СЏРњРµРЅСЏToolStripMenuItem->Size = System::Drawing::Size(217, 22);
+			this->РґР»СЏРњРµРЅСЏToolStripMenuItem->Text = L"Р”Р»СЏ РјРµРЅСЏ";
+			this->РґР»СЏРњРµРЅСЏToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::РґР»СЏРњРµРЅСЏToolStripMenuItem_Click);
+			// 
+			// menuToolStripMenuItem
+			// 
+			this->menuToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->leaveToolStripMenuItem});
+			this->menuToolStripMenuItem->Name = L"menuToolStripMenuItem";
+			this->menuToolStripMenuItem->Size = System::Drawing::Size(50, 20);
+			this->menuToolStripMenuItem->Text = L"Menu";
+			// 
+			// leaveToolStripMenuItem
+			// 
+			this->leaveToolStripMenuItem->Name = L"leaveToolStripMenuItem";
+			this->leaveToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->leaveToolStripMenuItem->Text = L"Leave";
+			this->leaveToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::leaveToolStripMenuItem_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(570, 314);
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->ClientSize = System::Drawing::Size(602, 346);
 			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->richTextBox1);
+			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->menuStrip1->ResumeLayout(false);
+			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -185,6 +260,8 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	connect(mySock, (SOCKADDR*)&address, adresize);
 	richTextBox1->AppendText("connect to srv!" + "\n");
 	sendName();
+	textBox2->Enabled = false;
+	textBox2->Clear();
 
 		ThreadStart^ threadDelegate = gcnew ThreadStart(this, &MyForm::TestThread);
 		Thread^ newThread = gcnew Thread( threadDelegate );
@@ -225,12 +302,12 @@ void TestThread()
 		char *get = new char[1024];
 		String^ msg = "";
 	
-for (int i = 0; i < DEFAULT_BUFLEN; i++) get[i] = 0;
+	for (int i = 0; i < DEFAULT_BUFLEN; i++) get[i] = 0;
 
 		recv(mySock, get, sizeof(get), NULL);
-		printf(get); printf("\n");
-		
-		for ( int i = 0; i < sizeof(get); i ++ )
+		printf(get); 
+			printf("\n"); 
+		for ( int i = 0; i < 1024; i ++ )
 		{
 			msg+= Convert::ToChar(get[i]);
 		}
@@ -238,15 +315,14 @@ for (int i = 0; i < DEFAULT_BUFLEN; i++) get[i] = 0;
 		richTextBox1->Invoke(gcnew Action<String^>(this, &MyForm::showMsg), msg);
 		
 	delete get;
-
+	
 	}
 	}
 }
-
 System::Void showMsg(String^ msg)
 	{ 
 		
-		richTextBox1->AppendText(msg + "\n");
+		richTextBox1->AppendText(msg);
 	}
 
 private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -254,7 +330,7 @@ private: System::Void textBox1_TextChanged(System::Object^  sender, System::Even
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		String^ smg = "";
 		smg += textBox1->Text;
-		
+		textBox1->Clear();
 		char msg[DEFAULT_BUFLEN];
 	
 		for ( int i = 0; i < smg->Length; i++)
@@ -265,6 +341,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 		{
 			msg[i] = '\0';
 		}
+		msg[smg->Length] = '\n';
 
 		send(mySock,msg,sizeof(msg), NULL);
 		
@@ -276,14 +353,14 @@ string getIP()
 		{
 				setlocale(LC_ALL,"russian");
 
-    string s; // сюда будем класть считанные строки
-    ifstream file("C:\\cppstudio.txt"); // файл из которого читаем (для линукс путь будет выглядеть по другому)
+    string s; // СЃСЋРґР° Р±СѓРґРµРј РєР»Р°СЃС‚СЊ СЃС‡РёС‚Р°РЅРЅС‹Рµ СЃС‚СЂРѕРєРё
+    ifstream file("C:\\cppstudio.txt"); // С„Р°Р№Р» РёР· РєРѕС‚РѕСЂРѕРіРѕ С‡РёС‚Р°РµРј (РґР»СЏ Р»РёРЅСѓРєСЃ РїСѓС‚СЊ Р±СѓРґРµС‚ РІС‹РіР»СЏРґРµС‚СЊ РїРѕ РґСЂСѓРіРѕРјСѓ)
 	string str;
-    while(getline(file, s)){ // пока не достигнут конец файла класть очередную строку в переменную (s)
+    while(getline(file, s)){ // РїРѕРєР° РЅРµ РґРѕСЃС‚РёРіРЅСѓС‚ РєРѕРЅРµС† С„Р°Р№Р»Р° РєР»Р°СЃС‚СЊ РѕС‡РµСЂРµРґРЅСѓСЋ СЃС‚СЂРѕРєСѓ РІ РїРµСЂРµРјРµРЅРЅСѓСЋ (s)
 		str = s;
     }
 
-    file.close(); // обязательно закрываем файл что бы не повредить его
+    file.close(); // РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Р·Р°РєСЂС‹РІР°РµРј С„Р°Р№Р» С‡С‚Рѕ Р±С‹ РЅРµ РїРѕРІСЂРµРґРёС‚СЊ РµРіРѕ
 
   vector<string> arr;
 cout << str << endl;  string delim(" ");
@@ -306,6 +383,26 @@ cout << str << endl;  string delim(" ");
   arr.push_back( str.substr( prev ) );
  return tmp;
 		}
+private: System::Void С‚СЏРЅРєР°ToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 MyForm::BackgroundImage = Image::FromFile("C:\\t2.jpg");
+		 }
+private: System::Void Backgrounds_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void toolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void listView1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void РѕР»РёРІРєР°ToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 MyForm::BackgroundImage = Image::FromFile("C:\\guard.png");
+		 }
+private: System::Void РґР»СЏРњРµРЅСЏToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			  MyForm::BackgroundImage = Image::FromFile("C:\\havchik.png");
+		 }
+private: System::Void leaveToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			 closesocket(mySock);
+			 exit(0);
+		 }
 };
 
 }
